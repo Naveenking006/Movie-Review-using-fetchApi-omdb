@@ -2,8 +2,19 @@ var p = 0;
 var output = '';
 //Search Results 
 
-async function getMovies() {
-    p = p + 1;
+async function getMovies(event) {
+
+    if (event === 'search') {
+        p = 1;
+        output = '';
+    }
+    if (event === 'more') {
+        p = p + 1
+    }
+    console.log(p);
+
+
+
     document.body.style.backgroundColor = '#343830'; //#343830
 
     document.getElementById("center").style.marginTop = "3px";
@@ -32,7 +43,7 @@ async function getMovies() {
                     c.innerHTML = output;
                 });
 
-                more.innerHTML = "<button id='showmore' onclick='getMovies()'> Show More Films</button>"
+                more.innerHTML = `<button id='showmore' onclick="getMovies('more')"> Show More Films</button>`
 
             } else {
                 c.innerHTML = `<img id="oops" src="https://vevmo.com/sites/default/files/upload/no_results.png" )>`
